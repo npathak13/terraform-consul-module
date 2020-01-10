@@ -7,7 +7,7 @@ resource "aws_instance" "server" {
     subnet_id = "${lookup(var.subnets, count.index % var.servers)}"
 
     connection {
-        host = aws_instance.sever.public_dns
+        host = aws_instance.server.public_dns
 	user = "${lookup(var.user, var.platform)}"
         private_key = "${file("${var.key_path}")}"
     }
